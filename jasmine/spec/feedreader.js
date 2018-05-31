@@ -75,9 +75,8 @@ $(function () {
             loadFeed(0, done);
         });
 
-        it('are retrieved and displayed correctly', function (done) {
+        it('are retrieved and displayed correctly', function () {
             expect(document.querySelectorAll('.feed .entry').length).toBeGreaterThan(0);
-            done();
         });
     });
 
@@ -99,9 +98,8 @@ $(function () {
             });
         });
 
-        it('new content is retrieved and displayed when a new feed is selected', function (done) {
+        it('new content is retrieved and displayed when a new feed is selected', function () {
             expect(initialTextContent).not.toBe(document.querySelector('.feed').textContent);
-            done();
         });
     });
 }());
