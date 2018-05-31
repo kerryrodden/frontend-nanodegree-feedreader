@@ -105,21 +105,19 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        let feed0FirstTitle = '';
-        let feed1FirstTitle = '';
+        let initialTextContent = '';
 
         beforeEach(function(done) {
             loadFeed(0, function() {
-                feed0FirstTitle = document.querySelector('.feed .entry h2').textContent;
+                initialTextContent = document.querySelector('.feed').textContent;
                 loadFeed(1, function () {
-                    feed1FirstTitle = document.querySelector('.feed .entry h2').textContent;
                     done();
                 });
             });
         });
 
         it('new content is retrieved and displayed when a new feed is selected', function(done) {
-            expect(feed0FirstTitle).not.toBe(feed1FirstTitle);
+            expect(initialTextContent).not.toBe(document.querySelector('.feed').textContent);
             done();
         });
     });
