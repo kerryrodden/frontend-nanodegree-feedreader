@@ -99,9 +99,28 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let feed0FirstTitle = '';
+        let feed1FirstTitle = '';
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                feed0FirstTitle = document.querySelector('.feed .entry h2').textContent;
+                loadFeed(1, function () {
+                    feed1FirstTitle = document.querySelector('.feed .entry h2').textContent;
+                    done();
+                });
+            });
+        });
+
+        it('new content is retrieved and displayed when a new feed is selected', function(done) {
+            expect(feed0FirstTitle).not.toBe(feed1FirstTitle);
+            done();
+        });
+    });
 }());
