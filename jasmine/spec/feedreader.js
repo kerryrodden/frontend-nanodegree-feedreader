@@ -72,9 +72,7 @@ $(function () {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function (done) {
-            loadFeed(0, function () {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         it('are retrieved and displayed correctly', function (done) {
@@ -97,9 +95,7 @@ $(function () {
             /* Wait for the first feed to load, store its content, then load the second */
             loadFeed(0, function () {
                 initialTextContent = document.querySelector('.feed').textContent;
-                loadFeed(1, function () {
-                    done();
-                });
+                loadFeed(1, done);
             });
         });
 
